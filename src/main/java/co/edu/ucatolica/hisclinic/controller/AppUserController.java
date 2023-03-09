@@ -1,7 +1,6 @@
 package co.edu.ucatolica.hisclinic.controller;
 
-import co.edu.ucatolica.hisclinic.domain.AppUser;
-import co.edu.ucatolica.hisclinic.service.AppUserService;
+import co.edu.ucatolica.hisclinic.model.AppUser;
 import co.edu.ucatolica.hisclinic.service.AppUserServiceImpl;
 import co.edu.ucatolica.hisclinic.util.Response;
 import lombok.RequiredArgsConstructor;

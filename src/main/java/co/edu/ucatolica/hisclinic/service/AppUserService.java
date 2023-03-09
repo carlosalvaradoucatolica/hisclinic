@@ -1,5 +1,5 @@
 package co.edu.ucatolica.hisclinic.service;
-import co.edu.ucatolica.hisclinic.domain.AppUser;
+import co.edu.ucatolica.hisclinic.model.AppUser;
 import co.edu.ucatolica.hisclinic.util.Response;
 import org.springframework.http.ResponseEntity;
 

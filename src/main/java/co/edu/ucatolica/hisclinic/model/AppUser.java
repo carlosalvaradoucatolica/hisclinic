@@ -1,16 +1,16 @@
-package co.edu.ucatolica.hisclinic.domain;
+package co.edu.ucatolica.hisclinic.model;
 
 import com.sun.istack.NotNull;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
+
 @Table(name = "app_user")
 //@NamedQuery(name = "AppUser.findByEmail",
     //query = "select a from AppUser a where LOWER(TRIM(a.username)) = LOWER(TRIM(?1))")
