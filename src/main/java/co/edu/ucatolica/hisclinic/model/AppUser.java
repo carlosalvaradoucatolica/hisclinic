@@ -10,7 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-
 @Table(name = "app_user")
 //@NamedQuery(name = "AppUser.findByEmail",
     //query = "select a from AppUser a where LOWER(TRIM(a.username)) = LOWER(TRIM(?1))")
@@ -31,7 +30,7 @@ public class AppUser implements Serializable {
     private String lastName;
 
     @Column(name = "enabled")
-    private Boolean enabled;
+    private Boolean enabled = false;
 
     @NotNull
     @Column(name = "password")

@@ -29,18 +29,6 @@ public class AppUserServiceImpl implements AppUserService{
 
     @Override
     public ResponseEntity<Response> save(AppUser appUser) {
-        /*
-        return  new ResponseEntity<Response>(
-                Response.builder()
-                        .timeStampo(LocalDateTime.now())
-                        .message("Usuario creado exitosamente.")
-                        .status(HttpStatus.CREATED)
-                        .statusCode(HttpStatus.CREATED.value())
-                        .data(Map.of("appUser",appUser))
-                        .build()
-                ,HttpStatus.CREATED
-        );*/
-
         String badRequestMessage = "";
         if(
             appUser.getFirstName() == null
@@ -94,7 +82,88 @@ public class AppUserServiceImpl implements AppUserService{
 
     @Override
     public ResponseEntity<Response>  update(AppUser appUser) {
-        return null;
-        //return appUserDAO.saveAndFlush(appUser);
+        String badRequestMessage = "";
+        if(
+                (appUser.getId() == null
+                || appUser.getId().equals(""))
+                || ( appUser.getFirstName() == null
+                    && appUser.getLastName() == null
+                    && appUser.getUsername() == null
+                    && appUser.getPassword() == null
+                    && appUser.getFirstName().equals("")
+                    && appUser.getLastName().equals("")
+                    && appUser.getUsername().equals("")
+                    && appUser.getPassword().equals(""))
+        ) {
+            badRequestMessage = "Campos requeridos no estan incluidos en el cuerpo del JSON.";
+        } else if (appUserDAO.findById(appUser.getId()).isEmpty()){
+            badRequestMessage = "El usuario con el ID ingresado no existe.";
+        } else if (appUser.getUsername() != null && !appUser.getUsername().equals("") && !emailValidator.test(appUser.getUsername())){
+            badRequestMessage = "El email no corresponde a una dirección de correo electrónico valida.";
+        }
+
+        if(!badRequestMessage.equals("")){
+            return new ResponseEntity<Response>(
+                    Response.builder()
+                            .timeStampo(LocalDateTime.now())
+                            .message(badRequestMessage)
+                            .status(HttpStatus.BAD_REQUEST)
+                            .statusCode(HttpStatus.BAD_REQUEST.value())
+                            .build()
+                    ,HttpStatus.BAD_REQUEST
+            );
+        }
+        if (appUser.getPassword() != null && !appUser.getPassword().equals("")) {
+            appUser.setPassword(bCryptPasswordEncoder().encode(appUser.getPassword()));
+        }
+
+        AppUser appUserPersisted = appUserDAO.saveAndFlush(appUser);
+        return  new ResponseEntity<Response>(
+                Response.builder()
+                        .timeStampo(LocalDateTime.now())
+                        .message("Usuario actualizado exitosamente.")
+                        .status(HttpStatus.OK)
+                        .statusCode(HttpStatus.OK.value())
+                        .data(Map.of("appUser",appUserPersisted))
+                        .build()
+                ,HttpStatus.OK
+        );
+    }
+
+    @Override
+    public ResponseEntity<Response> delete(AppUser appUser) {
+        String badRequestMessage = "";
+        if(
+                appUser.getId() == null
+                || appUser.getId().equals("")
+        )
+        {
+            badRequestMessage = "Campos requeridos no estan incluidos en el cuerpo del JSON.";
+        } else if (appUserDAO.findById(appUser.getId()).isEmpty()){
+            badRequestMessage = "El usuario con el ID ingresado no existe.";
+        }
+
+        if(!badRequestMessage.equals("")){
+            return new ResponseEntity<Response>(
+                    Response.builder()
+                            .timeStampo(LocalDateTime.now())
+                            .message(badRequestMessage)
+                            .status(HttpStatus.BAD_REQUEST)
+                            .statusCode(HttpStatus.BAD_REQUEST.value())
+                            .build()
+                    ,HttpStatus.BAD_REQUEST
+            );
+        }
+
+        appUserDAO.deleteById(appUser.getId());
+        return  new ResponseEntity<Response>(
+                Response.builder()
+                        .timeStampo(LocalDateTime.now())
+                        .message("Usuario eliminado exitosamente.")
+                        .status(HttpStatus.OK)
+                        .statusCode(HttpStatus.OK.value())
+                        .build()
+                ,HttpStatus.OK
+        );
     }
 }

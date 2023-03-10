@@ -7,4 +7,5 @@ public interface AppUserService {
     public ResponseEntity<Response> save(AppUser appUser);
     public ResponseEntity<Response>  get(String username);
     public ResponseEntity<Response>  update(AppUser appUser);
+    public ResponseEntity<Response>  delete(AppUser appUser);
 }

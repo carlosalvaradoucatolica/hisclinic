@@ -19,4 +19,9 @@ public class AppUserController {
         return appUserService.save(appUser);
     }
 
+    @PutMapping("")
+    public ResponseEntity<Response> update(@RequestBody AppUser appUser){ return appUserService.update(appUser); }
+
+    @DeleteMapping("")
+    public ResponseEntity<Response> delete(@RequestBody AppUser appUser){ return appUserService.delete(appUser); }
 }
