@@ -1,4 +1,4 @@
-package co.edu.ucatolica.hisclinic.model;
+package co.edu.ucatolica.hisclinic.domain.model;
 
 import lombok.*;
 

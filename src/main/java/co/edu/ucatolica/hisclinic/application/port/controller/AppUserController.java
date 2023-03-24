@@ -1,8 +1,8 @@
-package co.edu.ucatolica.hisclinic.controller;
+package co.edu.ucatolica.hisclinic.application.port.controller;
 
-import co.edu.ucatolica.hisclinic.model.AppUser;
-import co.edu.ucatolica.hisclinic.service.AppUserServiceImpl;
-import co.edu.ucatolica.hisclinic.util.Response;
+import co.edu.ucatolica.hisclinic.domain.model.AppUser;
+import co.edu.ucatolica.hisclinic.domain.service.AppUserServiceImpl;
+import co.edu.ucatolica.hisclinic.infraestructure.dto.response.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

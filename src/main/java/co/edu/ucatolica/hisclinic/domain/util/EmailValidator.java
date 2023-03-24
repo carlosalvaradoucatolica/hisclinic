@@ -1,4 +1,4 @@
-package co.edu.ucatolica.hisclinic.util;
+package co.edu.ucatolica.hisclinic.domain.util;
 
 import org.springframework.stereotype.Service;
 

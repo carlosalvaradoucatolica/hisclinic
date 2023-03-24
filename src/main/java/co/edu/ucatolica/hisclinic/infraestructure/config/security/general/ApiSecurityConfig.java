@@ -1,4 +1,4 @@
-package co.edu.ucatolica.hisclinic.util.security.general;
+package co.edu.ucatolica.hisclinic.infraestructure.config.security.general;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

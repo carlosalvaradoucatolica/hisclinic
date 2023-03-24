@@ -1,9 +1,9 @@
-package co.edu.ucatolica.hisclinic.service;
+package co.edu.ucatolica.hisclinic.domain.service;
 
-import co.edu.ucatolica.hisclinic.dao.AppUserDAO;
-import co.edu.ucatolica.hisclinic.model.AppUser;
-import co.edu.ucatolica.hisclinic.util.EmailValidator;
-import co.edu.ucatolica.hisclinic.util.Response;
+import co.edu.ucatolica.hisclinic.infraestructure.repository.AppUserDAO;
+import co.edu.ucatolica.hisclinic.domain.model.AppUser;
+import co.edu.ucatolica.hisclinic.domain.util.EmailValidator;
+import co.edu.ucatolica.hisclinic.infraestructure.dto.response.Response;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
