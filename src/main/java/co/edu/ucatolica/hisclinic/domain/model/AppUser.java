@@ -5,10 +5,12 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "app_user")
 //@NamedQuery(name = "AppUser.findByEmail",
@@ -20,8 +22,8 @@ public class AppUser implements Serializable {
     @Column(name = "id")
     private Long id;
     @NotNull
-    @Column(unique = true, name = "username")
-    private String username;
+    @Column(unique = true, name = "email")
+    private String email;
     @NotNull
     @Column(name = "first_name")
     private String firstName;
@@ -36,15 +38,18 @@ public class AppUser implements Serializable {
     @Column(name = "password")
     private String password;
 
-    //TODO: hacer asignaciones con tablas de union para relaciones muchos a muchos, o manejar con enums ?
-    //@OneToMany
-    //@JoinColumn(name = "app_user_id")
-    //private List<RolUnion> asignaciones;
+    @ManyToMany
+    @JoinTable(name = "appuser_role", joinColumns = @JoinColumn(name = "appuser_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
 
-    //Opcion 2:
-    //@ManyToMany
-    //@JoinTable(name = "appuser_roles", joinColumns = @JoinColumn(name = "appuser_id"),
-    //        inverseJoinColumns = @JoinColumn(name = "role_id"))
-    //private Collection<Role> roles;
+    public AppUser(String email, String firstName, String lastName, Boolean enabled, String password, Collection<Role> roles) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.enabled = enabled;
+        this.password = password;
+        this.roles = roles;
+    }
 
 }

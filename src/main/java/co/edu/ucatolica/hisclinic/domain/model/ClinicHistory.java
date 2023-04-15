@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Data
 @Table(name = "clinic_history")
 public class ClinicHistory {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;

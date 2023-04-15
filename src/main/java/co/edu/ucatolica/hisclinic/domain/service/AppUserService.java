@@ -4,8 +4,7 @@ import co.edu.ucatolica.hisclinic.infraestructure.dto.response.Response;
 import org.springframework.http.ResponseEntity;
 
 public interface AppUserService {
-    public ResponseEntity<Response> save(AppUser appUser);
-    public ResponseEntity<Response>  get(String username);
-    public ResponseEntity<Response>  update(AppUser appUser);
-    public ResponseEntity<Response>  delete(AppUser appUser);
+    public AppUser upsert(AppUser appUser);
+    public AppUser getByUsername(String email);
+    public AppUser delete(AppUser appUser);
 }

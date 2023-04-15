@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/appUser")
+@RequestMapping(path = "/auth")
 @RequiredArgsConstructor
-public class AppUserController {
+public class AuthController {
 
     private final AppUserServiceImpl appUserService;
     //Crear usuario
