@@ -1,27 +1,25 @@
 package co.edu.ucatolica.hisclinic.application.port.controller;
 
-import co.edu.ucatolica.hisclinic.domain.model.AppUser;
-import co.edu.ucatolica.hisclinic.domain.service.AppUserServiceImpl;
-import co.edu.ucatolica.hisclinic.infraestructure.dto.response.Response;
+import co.edu.ucatolica.hisclinic.application.usecases.auth.LoginUseCase;
+import co.edu.ucatolica.hisclinic.application.usecases.auth.LoginUseCaseImpl;
+import co.edu.ucatolica.hisclinic.application.usecases.auth.SignUpUseCaseImpl;
+import co.edu.ucatolica.hisclinic.infraestructure.dto.request.AppUserDTO;
+import co.edu.ucatolica.hisclinic.infraestructure.dto.response.ResponseDTO;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/auth")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AuthController {
 
-    private final AppUserServiceImpl appUserService;
-    //Crear usuario
-    @PostMapping("")
-    public ResponseEntity<Response> save(@RequestBody AppUser appUser){
-        return appUserService.save(appUser);
+    private final LoginUseCaseImpl loginUseCase;
+    private final SignUpUseCaseImpl signUpUseCase;
+
+    @PostMapping("/signUp")
+    public ResponseEntity<ResponseDTO> save(@RequestBody AppUserDTO appUserDTO){
+        return signUpUseCase.signUp(appUserDTO);
     }
-
-    @PutMapping("")
-    public ResponseEntity<Response> update(@RequestBody AppUser appUser){ return appUserService.update(appUser); }
-
-    @DeleteMapping("")
-    public ResponseEntity<Response> delete(@RequestBody AppUser appUser){ return appUserService.delete(appUser); }
 }

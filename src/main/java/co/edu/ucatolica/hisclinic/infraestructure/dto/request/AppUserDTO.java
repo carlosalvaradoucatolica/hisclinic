@@ -2,26 +2,36 @@ package co.edu.ucatolica.hisclinic.infraestructure.dto.request;
 
 import co.edu.ucatolica.hisclinic.domain.model.AppUser;
 import co.edu.ucatolica.hisclinic.domain.service.util.EmailValidator;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import javax.persistence.Column;
+import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AppUserDTO {
+    @Bean
+    private EmailValidator emailValidator() {
+        return new EmailValidator();
+    }
     private String email;
     private String firstName;
     private String lastName;
     private Boolean enabled = false;
     private String password;
-    private final EmailValidator emailValidator;
 
     public AppUser valid(){
         if(
-            emailValidator.test(this.email)
-            &&   !email.isBlank()
-            &&   !firstName.isBlank()
-            &&   !lastName.isBlank()
-            &&   !password.isBlank()
+            emailValidator().test(this.email)
+            && email != null
+            && !email.isBlank()
+            && firstName != null
+            && !firstName.isBlank()
+            && lastName != null
+            && !lastName.isBlank()
+            && password != null
+            && !password.isBlank()
         ) {
             return new AppUser(
                     this.email,
@@ -38,7 +48,7 @@ public class AppUserDTO {
 
     public AppUser validAtLogin(){
         if(
-                emailValidator.test(this.email)
+                emailValidator().test(this.email)
                 &&   !email.isBlank()
                 &&   !password.isBlank()
         ) {

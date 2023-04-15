@@ -11,8 +11,8 @@ import java.util.Map;
 @Data
 @SuperBuilder
 @JsonInclude(JsonInclude.Include.ALWAYS)
-public class Response {
-    protected LocalDateTime timeStampo;
+public class ResponseDTO {
+    protected LocalDateTime timeStamp;
     protected int statusCode;
     protected HttpStatus status;
     protected String message;
