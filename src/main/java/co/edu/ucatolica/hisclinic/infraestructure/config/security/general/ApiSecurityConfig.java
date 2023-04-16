@@ -47,6 +47,7 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
+                .antMatchers("/store/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 //.exceptionHandling().authenticationEntryPoint(jwtEntryPoint)

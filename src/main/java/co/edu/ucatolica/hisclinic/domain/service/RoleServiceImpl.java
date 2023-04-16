@@ -15,7 +15,7 @@ public class RoleServiceImpl implements RoleService{
     private final RoleDAO roleDAO;
     @Override
     public Role save(Role role) {
-        return roleDAO.save(role);
+        return roleDAO.saveAndFlush(role);
     }
 
     @Override

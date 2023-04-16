@@ -54,10 +54,10 @@ public class SignUpUseCaseImpl implements SignUpUseCase{
                         .timeStamp(LocalDateTime.now())
                         .data(Map.of("id",appUser.getId()))
                         .message("Usuario creado con exito, por favor verifique la cuenta.")
-                        .status(HttpStatus.OK)
-                        .statusCode(HttpStatus.OK.value())
+                        .status(HttpStatus.CREATED)
+                        .statusCode(HttpStatus.CREATED.value())
                         .build()
-                , HttpStatus.OK
+                , HttpStatus.CREATED
         );
     }
 }
