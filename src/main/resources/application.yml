@@ -50,4 +50,8 @@ sengrid:
   key: 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
 
 mercadopago:
-  access_token: TEST-2082371625091714-041509-ec1946dd54a4880a843eeaf6830a8c97-413869228
+  access-token: TEST-2082371625091714-041509-ec1946dd54a4880a843eeaf6830a8c97-413869228
+  url: https://api.mercadopago.com/
+  endpoint-create-payment: checkout/preferences
+  payment-state-default: PENDING
+  purchase-expires-time-hours-default: 24

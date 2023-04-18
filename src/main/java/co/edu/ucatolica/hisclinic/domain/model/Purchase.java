@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -23,13 +23,27 @@ public class Purchase {
     @JoinColumn(name = "product_id")
     private Product product;
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDateTime createdAt;
     @Column(name = "expires_at")
-    private Date expiresAt;
+    private LocalDateTime expiresAt;
     @Column(name = "payment_processor_reference")
     private String paymentProcessorReference;
     @Column(name = "paid")
     private Boolean paid;
     @Column(name = "payment_processor_state")
     private String paymentProcessorState;
+
+    public Purchase(AppUser appUser, Product product, LocalDateTime createdAt, LocalDateTime expiresAt, String paymentProcessorReference, Boolean paid, String paymentProcessorState) {
+        this.appUser = appUser;
+        this.product = product;
+        this.createdAt = createdAt;
+        this.expiresAt = expiresAt;
+        this.paymentProcessorReference = paymentProcessorReference;
+        this.paid = paid;
+        this.paymentProcessorState = paymentProcessorState;
+    }
+
+    public Purchase(Product product) {
+        this.product = product;
+    }
 }

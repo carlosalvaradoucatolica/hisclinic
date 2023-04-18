@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,5 +21,10 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<Product> list() {
         return productDAO.findAll();
+    }
+
+    @Override
+    public Optional<Product> getProduct(Integer id) {
+        return productDAO.findById(id);
     }
 }

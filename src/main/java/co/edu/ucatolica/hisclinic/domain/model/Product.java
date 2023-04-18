@@ -1,6 +1,8 @@
 package co.edu.ucatolica.hisclinic.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +16,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "product")
 public class Product {
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -28,9 +31,11 @@ public class Product {
     @Column(name = "quantity")
     private Integer quantity;
     @NotNull
+    @JsonProperty("currency_id")
     @Column(name = "currency_id")
     private String currencyId;
     @NotNull
+    @JsonProperty("unit_price")
     @Column(name = "unit_price")
     private Integer unitPrice;
     @JsonIgnore
@@ -45,5 +50,9 @@ public class Product {
         this.currencyId = currencyId;
         this.unitPrice = unitPrice;
         this.serviceMonths = serviceMonths;
+    }
+
+    public Product(Integer id) {
+        this.id = id;
     }
 }
