@@ -17,6 +17,8 @@ public class ClinicHistory {
     private String last_name;
     private LocalDate date_of_birth;
     private String city;
+    private String type;
+    private String comment;
     @ManyToOne
     private AppUser appUser;
 }
