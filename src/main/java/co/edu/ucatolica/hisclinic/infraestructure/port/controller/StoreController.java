@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class StoreController {
     private final GetProductUseCaseImpl getProductUseCase;
     private final CreatePaymentUseCase createPaymentUseCase;
+
     @GetMapping("/getProducts")
     public ResponseEntity<ResponseDTO> getProducts(){
         return getProductUseCase.getProducts();
