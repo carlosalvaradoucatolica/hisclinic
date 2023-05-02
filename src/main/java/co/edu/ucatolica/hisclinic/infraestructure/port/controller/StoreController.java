@@ -1,4 +1,4 @@
-package co.edu.ucatolica.hisclinic.application.port.controller;
+package co.edu.ucatolica.hisclinic.infraestructure.port.controller;
 
 import co.edu.ucatolica.hisclinic.application.usecases.store.CreatePaymentUseCase;
 import co.edu.ucatolica.hisclinic.application.usecases.store.GetProductUseCaseImpl;
