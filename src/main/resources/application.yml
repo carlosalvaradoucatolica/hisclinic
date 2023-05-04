@@ -55,3 +55,6 @@ mercadopago:
   endpoint-create-payment: checkout/preferences
   payment-state-default: PENDING
   purchase-expires-time-hours-default: 24
+
+auditoria:
+  default: db
