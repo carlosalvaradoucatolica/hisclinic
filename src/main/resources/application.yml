@@ -47,7 +47,7 @@ security:
       login: 3600000
 
 sengrid:
-  key: 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
+  key: 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
 
 mercadopago:
   access-token: TEST-2082371625091714-041509-ec1946dd54a4880a843eeaf6830a8c97-413869228

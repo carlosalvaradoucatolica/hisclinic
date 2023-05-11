@@ -4,6 +4,7 @@ import co.edu.ucatolica.hisclinic.domain.model.AppUser;
 import co.edu.ucatolica.hisclinic.domain.service.AppUserService;
 import co.edu.ucatolica.hisclinic.infraestructure.dto.request.AppUserDTO;
 import co.edu.ucatolica.hisclinic.infraestructure.dto.response.ResponseDTO;
+import co.edu.ucatolica.hisclinic.infraestructure.integration.sengrid.SendgridService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import java.util.Map;
 public class SignUpUseCaseImpl implements SignUpUseCase{
 
     private final AppUserService appUserService;
+    private final SendgridService sendGridService;
     @Bean
     private BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -49,6 +51,9 @@ public class SignUpUseCaseImpl implements SignUpUseCase{
         appUser.setRoles(null);
         //Insertamos el usuario en la base de datos.
         appUser = appUserService.upsert(appUser);
+
+        sendGridService.sendEmailVerification("carlosalvarado.ph@gmail.com","Carlos","123456");
+
         return new ResponseEntity<>(
                 ResponseDTO.builder()
                         .timeStamp(LocalDateTime.now())
