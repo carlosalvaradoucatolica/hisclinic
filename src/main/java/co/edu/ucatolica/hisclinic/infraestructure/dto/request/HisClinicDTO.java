@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class HisClinicDTO {
-    private int id;
+    private int identification;
     private String city;
     private LocalDate date_of_birth;
     private String last_name;
@@ -19,5 +19,4 @@ public class HisClinicDTO {
     private String type;
     @NotNull
     private String comment;
-    private int app_user_id;
 }
