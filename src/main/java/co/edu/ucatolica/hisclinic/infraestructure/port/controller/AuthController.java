@@ -17,7 +17,7 @@ public class AuthController {
     private final SignUpUseCaseImpl signUpUseCase;
 
     @PostMapping("/signUp")
-    public ResponseEntity<ResponseDTO> signUp(@RequestBody AppUserDTO appUserDTO){
+    public ResponseEntity<ResponseDTO> signUp(@RequestBody AppUserDTO appUserDTO) {
         return signUpUseCase.signUp(appUserDTO);
     }
 }

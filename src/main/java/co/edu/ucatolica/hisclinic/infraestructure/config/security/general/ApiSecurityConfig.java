@@ -48,6 +48,7 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/store/**").permitAll()
+                .antMatchers("/clinicHistory/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 //.exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
