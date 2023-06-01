@@ -17,4 +17,9 @@ public class PurchaseServiceImpl implements PurchaseService{
     public Purchase save(Purchase purchase) { return purchaseDAO.save(purchase); }
     @Override
     public Purchase getByExternalReference(String externalReference) {return purchaseDAO.findPurchaseByPaymentProcessorReference(externalReference);}
+
+    @Override
+    public Purchase findById(Long Id) {
+        return purchaseDAO.findById(Id).get();
+    }
 }

@@ -116,8 +116,17 @@ public class CreatePaymentUseCaseImpl implements CreatePaymentUseCase {
             );
         }
 
+        //Construimos el objeto tipo Purchase con la referencia externa y demas pagos, y lo retornamos conforma a US
+        purchase.setCreatedAt(LocalDateTime.now());
+        purchase.setPaid(false);
+        purchase.setAppUser(appUser);
+        purchase.setProduct(product.get());
+        purchase.setPaymentProcessorState(paymentStateDefault);
+        purchase.setExpiresAt(LocalDateTime.now().plusHours(purchaseExpiresHoursDefault));
+        purchase = purchaseService.save(purchase);
+
         //Realizamos la solicitud a la pasarela de pagos para poder obtener el link de pago y la referencia de pago externa.
-        Map<?,?> response = mercadoPagoService.createPaymentLink(product.get());
+        Map<?,?> response = mercadoPagoService.createPaymentLink(product.get(),purchase.getId().toString());
         if((Integer) response.get("statusCode") != 201){
 
             //TODO: esta es la implementación del parcial
@@ -143,13 +152,6 @@ public class CreatePaymentUseCaseImpl implements CreatePaymentUseCase {
             );
         }
 
-        //Construimos el objeto tipo Purchase con la referencia externa y demas pagos, y lo retornamos conforma a US
-        purchase.setCreatedAt(LocalDateTime.now());
-        purchase.setPaid(false);
-        purchase.setAppUser(appUser);
-        purchase.setProduct(product.get());
-        purchase.setPaymentProcessorState(paymentStateDefault);
-        purchase.setExpiresAt(LocalDateTime.now().plusHours(purchaseExpiresHoursDefault));
         purchase.setPaymentProcessorReference((String) ((Map<?,?>) response.get("data")).get("id"));
         purchase = purchaseService.save(purchase);
 

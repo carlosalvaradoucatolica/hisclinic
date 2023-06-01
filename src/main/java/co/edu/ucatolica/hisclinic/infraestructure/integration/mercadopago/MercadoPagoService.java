@@ -6,5 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import java.util.Map;
 
 public interface MercadoPagoService {
-    public Map<?,?> createPaymentLink(Product product) throws JsonProcessingException;
+    public Map<?,?> createPaymentLink(Product product, String externalReference) throws JsonProcessingException;
+
+    public Map<?,?> getPaymentMetadata(String paymentId);
 }

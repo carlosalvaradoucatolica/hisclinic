@@ -48,10 +48,9 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/store/**").permitAll()
+                .antMatchers("/mercadopago/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                //.exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
-                //.and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         //http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }

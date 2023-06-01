@@ -7,4 +7,6 @@ import java.util.List;
 public interface PurchaseService {
     public Purchase save(Purchase purchase);
     public Purchase getByExternalReference(String externalReference);
+
+    public Purchase findById(Long id);
 }
