@@ -49,6 +49,7 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/store/**").permitAll()
                 .antMatchers("/mercadopago/**").permitAll()
+                .antMatchers("/clinicHistory/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

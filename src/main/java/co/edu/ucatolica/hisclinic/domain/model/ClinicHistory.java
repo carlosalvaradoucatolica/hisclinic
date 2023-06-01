@@ -1,12 +1,16 @@
 package co.edu.ucatolica.hisclinic.domain.model;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Table(name = "clinic_history")
 public class ClinicHistory {
@@ -19,6 +23,7 @@ public class ClinicHistory {
     private String name;
     @NotNull
     private String last_name;
+    private LocalDate date_of_birth;
     @NotNull
     private String city;
     @NotNull
