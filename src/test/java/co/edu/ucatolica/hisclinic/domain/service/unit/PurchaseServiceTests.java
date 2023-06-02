@@ -1,6 +1,7 @@
-package co.edu.ucatolica.hisclinic.domain.service;
+package co.edu.ucatolica.hisclinic.domain.service.unit;
 
 import co.edu.ucatolica.hisclinic.domain.model.*;
+import co.edu.ucatolica.hisclinic.domain.service.PurchaseService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
